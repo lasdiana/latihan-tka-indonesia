@@ -6,16 +6,16 @@
     <title>Portal Latihan Mandiri TKA Bahasa Indonesia</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 800px; background: #fff; padding: 30px; margin: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .container { max-width: 850px; background: #fff; padding: 30px; margin: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
         h2 { color: #1e3a8a; text-align: center; margin-bottom: 5px; }
         p.subtitle { text-align: center; color: #64748b; margin-top: 0; margin-bottom: 25px; }
         
-        .card-menu { background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
-        .input-group { margin-bottom: 15px; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; }
-        .input-group label { display: block; font-weight: bold; margin-bottom: 5px; color: #334155; }
-        .input-group input, .input-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; }
+        .card-menu { background: #f8fafc; border: 1px solid #cbd5e1; padding: 25px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        .input-group { margin-bottom: 18px; text-align: left; max-width: 450px; margin-left: auto; margin-right: auto; }
+        .input-group label { display: block; font-weight: bold; margin-bottom: 6px; color: #334155; }
+        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; background: #fff; cursor: pointer; }
         
-        .btn-paket { background-color: #2563eb; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; }
+        .btn-paket { background-color: #2563eb; color: white; border: none; padding: 14px 20px; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; max-width: 450px; margin-top: 10px; }
         .btn-paket:hover { background-color: #1d4ed8; }
 
         .hidden { display: none !important; }
@@ -38,6 +38,8 @@
         
         .student-info { background: #e0f2fe; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; color: #0369a1; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
         .back-btn { background: #64748b; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+        .badge-kognitif { display: inline-block; background: #e2e8f0; color: #334155; font-size: 12px; padding: 3px 8px; border-radius: 4px; margin-bottom: 6px; font-weight: bold; }
+        .text-stimulus { background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 12px; margin-bottom: 15px; font-size: 14px; color: #334155; font-style: italic; border-radius: 0 6px 6px 0; }
     </style>
 </head>
 <body>
@@ -50,23 +52,24 @@
     <div id="loginSection" class="card-menu">
         <h3>Silakan Masukkan Data Diri</h3>
         <div class="input-group">
-            <label>Nama Lengkap Siswa:</label>
+            <label for="namaSiswa">Nama Lengkap Siswa:</label>
             <input type="text" id="namaSiswa" placeholder="Contoh: Budi Santoso">
         </div>
         <div class="input-group">
-            <label>Kelas:</label>
+            <label for="kelasSiswa">Kelas:</label>
             <input type="text" id="kelasSiswa" placeholder="Contoh: 9A">
         </div>
         <div class="input-group">
-            <label>Pilih Paket Soal Tryout:</label>
+            <label for="pilihPaket">Pilih Paket Soal Tryout:</label>
             <select id="pilihPaket">
-                <option value="1">Paket 1 (10 Soal)</option>
-                <option value="2">Paket 2 (10 Soal)</option>
-                <option value="3">Paket 3 (10 Soal)</option>
-                <option value="4">Paket 4 (10 Soal)</option>
+                <option value="1">Paket 1 (10 Soal - Pantai Batu Banua & Infografik KIA)</option>
+                <option value="2">Paket 2 (10 Soal - Keindahan Alam & Piring Sehat)</option>
+                <option value="3">Paket 3 (10 Soal - Penumpang Bus Kota & Iklan)</option>
+                <option value="4">Paket 4 (10 Soal - Kupu-Kupu & Puisi Guru)</option>
+                <option value="5">🌟 PAKET 5: TRYOUT UTAMA (30 Soal - Tekstual, Inferensial, Evaluasi & Apresiasi)</option>
             </select>
         </div>
-        <button type="button" class="btn-paket" onclick="mulaiUjian()">Mulai Latihan</button>
+        <button type="button" class="btn-paket" onclick="mulaiUjian()">Mulai Latihan / Tryout</button>
     </div>
 
     <!-- HALAMAN SOAL UTAMA -->
@@ -134,15 +137,270 @@ const bankSoal = {
         { q: "8. Dalam struktur teks berita, bagian teras berita (lead) umumnya terletak pada...", opts: { A: "Paragraf terakhir", B: "Paragraf pertama sebagai rangkuman inti peristiwa", C: "Daftar pustaka", D: "Catatan kaki" }, key: "B", exp: "Pembahasan: Teras berita berada di awal berita untuk menarik perhatian dan merangkum pokok kejadian." },
         { q: "9. Unsur berita yang menanyakan 'mengapa' suatu peristiwa terjadi berkaitan dengan aspek...", opts: { A: "What (Apa)", B: "Who (Siapa)", C: "Why (Mengapa / Alasan)", D: "Where (Di mana)" }, key: "C", exp: "Pembahasan: Unsur 'mengapa' mencakup latar belakang atau alasan terjadinya peristiwa." },
         { q: "10. Perbaikan penulisan ejaan yang salah pada kata 'sintesa' sesuai KBBI baku adalah...", opts: { A: "Sinteza", B: "Sintesis", C: "Synteca", D: "Syntesa" }, key: "B", exp: "Pembahasan: Kata baku serapan yang tepat dalam bahasa Indonesia adalah 'sintesis'." }
+    ],
+    "5": [
+        // --- I. ASPEK PEMAHAMAN TEKSTUAL (LITERAL) ---
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Teks Stimulus: \"Banjir bandang yang menerjang Desa Sukamaju pada hari Selasa malam menghancurkan sekitar 45 rumah warga dan memutus jembatan utama penghubung antardesa. Menurut Badan Penanggulangan Bencana Daerah (BPBD), bencana ini dipicu oleh curah hujan tinggi yang turun secara terus-menerus selama enam jam serta penyumbatan aliran sungai akibat maraknya sampah plastik.\"",
+            q: "1. Kapan terjadinya bencana banjir bandang di Desa Sukamaju?",
+            opts: { A: "Senin malam", B: "Selasa malam", C: "Rabu pagi", D: "Selasa pagi" },
+            key: "B",
+            exp: "Pembahasan Tekstual: Dinyatakan secara tersurat pada teks \"...pada hari Selasa malam...\"."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Berdasarkan teks banjir bandang di Desa Sukamaju di atas.",
+            q: "2. Berapa jumlah perkiraan rumah warga yang hancur akibat banjir tersebut?",
+            opts: { A: "Sekitar 35 rumah", B: "Sekitar 40 rumah", C: "Sekitar 45 rumah", D: "Sekitar 50 rumah" },
+            key: "C",
+            exp: "Pembahasan Tekstual: Informasi tersurat menyebutkan \"...menghancurkan sekitar 45 rumah warga...\"."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Berdasarkan teks banjir bandang di Desa Sukamaju di atas.",
+            q: "3. Apa penyebab utama banjir bandang berdasarkan laporan BPBD?",
+            opts: { A: "Penebangan liar di hutan lindung", B: "Kurangnya saluran air di desa", C: "Curah hujan tinggi dan penyumbatan aliran sungai oleh sampah plastik", D: "Jebolnya bendungan di dekat desa" },
+            key: "C",
+            exp: "Pembahasan Tekstual: Laporan BPBD secara eksplisit menyatakan dipicu curah hujan tinggi dan penyumbatan sampah."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Teks Stimulus: \"Vitamin C adalah nutrisi yang sangat penting bagi tubuh manusia karena berfungsi sebagai antioksidan, meningkatkan sistem kekebalan tubuh, serta mempercepat proses penyembuhan luka. Vitamin ini banyak ditemukan pada buah-buahan segar seperti jeruk, kiwi, stroberi, serta sayuran hijau seperti brokoli dan bayam. Karena tubuh tidak dapat memproduksi atau menyimpan Vitamin C dalam jumlah besar, konsumsi makanan kaya vitamin ini dianjurkan setiap hari.\"",
+            q: "4. Apa salah satu fungsi utama Vitamin C bagi tubuh manusia?",
+            opts: { A: "Menjaga kekuatan tulang dan gigi", B: "Meningkatkan sistem kekebalan tubuh", C: "Membentuk sel darah merah", D: "Menambah massa otot secara instan" },
+            key: "B",
+            exp: "Pembahasan Tekstual: Teks menyebutkan vitamin C berfungsi meningkatkan sistem kekebalan tubuh."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Berdasarkan teks Vitamin C di atas.",
+            q: "5. Manakah kelompok makanan di bawah ini yang kaya akan Vitamin C berdasarkan teks?",
+            opts: { A: "Daging sapi, ikan, dan telur", B: "Nasi putih, kentang, dan ubi", C: "Jeruk, stroberi, dan brokoli", D: "Susu, keju, dan mentega" },
+            key: "C",
+            exp: "Pembahasan Tekstual: Teks mencantumkan buah jeruk, stroberi, serta sayur brokoli."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Berdasarkan teks Vitamin C di atas.",
+            q: "6. Mengapa konsumsi makanan kaya Vitamin C dianjurkan dilakukan setiap hari?",
+            opts: { A: "Karena vitamin ini mudah rusak di dalam kulkas", B: "Karena tubuh tidak dapat memproduksi atau menyimpan vitamin ini dalam jumlah besar", C: "Karena rasanya yang enak dan menyegarkan", D: "Karena vitamin ini wajib dicampur dengan protein hewani" },
+            key: "B",
+            exp: "Pembahasan Tekstual: Tersurat pada kalimat terakhir \"...tubuh tidak dapat memproduksi atau menyimpan Vitamin C dalam jumlah besar...\"."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Berdasarkan teks Vitamin C di atas.",
+            q: "7. Apa yang dimaksud Vitamin C berdasarkan fungsi awalnya dalam teks?",
+            opts: { A: "Nutrisi yang berfungsi sebagai antioksidan", B: "Hormon pengatur metabolisme tubuh", C: "Zat kimia berbahaya jika dikonsumsi berlebihan", D: "Suplemen buatan pabrik farmasi" },
+            key: "A",
+            exp: "Pembahasan Tekstual: Teks menyatakan vitamin C adalah nutrisi yang berfungsi sebagai antioksidan."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Teks Stimulus: \"Kue Cucur adalah salah satu jajanan pasar tradisional khas Betawi yang memiliki tekstur empuk di bagian tengah dan renyah di pinggirannya. Kue ini terbuat dari adonan tepung beras dan gula merah yang digoreng menggunakan minyak kelapa panas dalam wajan cekung kecil agar terbentuk 'topi' atau gundukan di bagian tengahnya.\"",
+            q: "8. Kue Cucur merupakan jajanan pasar tradisional yang berasal dari daerah...",
+            opts: { A: "Sunda", B: "Betawi", C: "Jawa", D: "Minang" },
+            key: "B",
+            exp: "Pembahasan Tekstual: Teks secara eksplisit menyatakan khas Betawi."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Berdasarkan teks Kue Cucur di atas.",
+            q: "9. Bahan utama apa saja yang digunakan untuk membuat adonan Kue Cucur?",
+            opts: { A: "Tepung terigu dan gula pasir", B: "Tepung ketan dan santan", C: "Tepung beras dan gula merah", D: "Tepung tapioka dan gula aren" },
+            key: "C",
+            exp: "Pembahasan Tekstual: Teks menyebutkan terbuat dari tepung beras dan gula merah."
+        },
+        {
+            tag: "I. Aspek Pemahaman Tekstual (Literal)",
+            stimulus: "Berdasarkan teks Kue Cucur di atas.",
+            q: "10. Bagaimana ciri khas tekstur dari Kue Cucur yang baik?",
+            opts: { A: "Keras di luar dan lembek di dalam", B: "Empuk di bagian tengah dan renyah di pinggirannya", C: "Lembut dan kenyal di seluruh bagian", D: "Padat dan manis pekat" },
+            key: "B",
+            exp: "Pembahasan Tekstual: Teks menuliskan tekstur empuk di bagian tengah dan renyah di pinggirannya."
+        },
+
+        // --- II. ASPEK PEMAHAMAN INFERENSIAL ---
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Teks Stimulus: \"Pagi itu, Rian berjalan mondar-mandir di depan ruang kelas sambil menggigit kukunya. Sesekali ia melirik jam tangan digital di pergelangan tangannya dengan napas yang memburu. Lembar ringkasan materi di tangannya sudah tampak kusut karena terlalu erat digenggam.\"",
+            q: "11. Berdasarkan ilustrasi perilaku Rian, dapat disimpulkan bahwa ia sedang...",
+            opts: { A: "Marah besar kepada temannya", B: "Merasa gugup atau cemas menghadapi sesuatu", C: "Kebingungan mencari alamat ruangan", D: "Sangat gembira menyambut liburan" },
+            key: "B",
+            exp: "Pembahasan Inferensial: Mondar-mandir, menggigit kuku, dan napas memburu merupakan gestur kecemasan/kegugupan."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Berdasarkan ilustrasi perilaku Rian di atas.",
+            q: "12. Perilaku Rian yang menggigit kuku dan menggenggam lembar ringkasan dengan erat menunjukkan bahwa...",
+            opts: { A: "Rian belum belajar sama sekali", B: "Rian sedang bersiap mengikuti ujian atau presentasi penting", C: "Rian sedang menunggu bel istirahat berbunyi", D: "Rian sedang menghafal lirik lagu untuk lomba" },
+            key: "B",
+            exp: "Pembahasan Inferensial: Memegang lembar ringkasan materi erat-erat menyiratkan persiapan menghadapi tes/ujian."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Berdasarkan ilustrasi perilaku Rian di atas.",
+            q: "13. Suasana hati yang paling dominan dirasakan oleh Rian pada saat itu adalah...",
+            opts: { A: "Tenang dan santai", B: "Sedih dan kecewa", C: "Tegang dan gelisah", D: "Kecewa dan marah" },
+            key: "C",
+            exp: "Pembahasan Inferensial: Situasi tersebut merefleksikan kondisi psikologis tegang dan gelisah."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Teks Stimulus: \"Sejak dua tahun terakhir, Pak Budi beralih dari penggunaan pupuk kimia ke pupuk organik untuk tanaman padinya. Meskipun pada panen pertama hasilnya sempat menurun drastis, kini tanah di sawahnya menjadi jauh lebih gembur, populasi cacing tanah meningkat, dan biaya produksi jangka panjangnya jauh lebih hemat.\"",
+            q: "14. Apa implikasi atau kesimpulan jangka panjang dari keputusan Pak Budi beralih ke pupuk organik?",
+            opts: { A: "Pak Budi akan mengalami kerugian finansial yang besar selamanya", B: "Kualitas ekosistem tanah sawah membaik dan biaya operasional lebih efisien", C: "Tanaman padi milik Pak Budi menjadi kebal terhadap segala jenis hama", D: "Jumlah hasil panen langsung melonjak tinggi pada minggu pertama" },
+            key: "B",
+            exp: "Pembahasan Inferensial: Tanah gembur dan biaya hemat menyimpulkan perbaikan ekosistem dan efisiensi jangka panjang."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Berdasarkan teks Pak Budi di atas.",
+            q: "15. Mengapa hasil panen Pak Budi sempat menurun drastis pada awal masa peralihan?",
+            opts: { A: "Karena bibit padi yang digunakan berkualitas buruk", B: "Karena tanah perlu waktu penyesuaian setelah lama bergantung pada bahan kimia", C: "Karena Pak Budi kurang rajin merawat sawahnya", D: "Karena cuaca saat itu sangat ekstrem" },
+            key: "B",
+            exp: "Pembahasan Inferensial: Peralihan dari bahan kimia ke organik memerlukan masa pemulihan struktur biologi tanah."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Berdasarkan teks Pak Budi di atas.",
+            q: "16. Peningkatan populasi cacing tanah di sawah Pak Budi mengindikasikan bahwa...",
+            opts: { A: "Tanah sawah semakin subur dan sehat secara biologis", B: "Sawah tersebut akan segera dilanda banjir", C: "Pupuk kimia masih tertinggal di dalam tanah", D: "Tanaman padi kekurangan air" },
+            key: "A",
+            exp: "Pembahasan Inferensial: Kehadiran cacing tanah merupakan indikator utama kesuburan biologis tanah."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Berdasarkan teks Pak Budi di atas.",
+            q: "17. Sikap yang dapat teladani dari tokoh Pak Budi adalah...",
+            opts: { A: "Pantang menyerah dan berorientasi pada kelestarian jangka panjang", B: "Selalu memilih cara instan demi keuntungan cepat", C: "Ragu-ragu dalam mengambil keputusan bisnis", D: "Enggan mencoba metode baru dalam bertani" },
+            key: "A",
+            exp: "Pembahasan Inferensial: Pak Budi sabar melewati penurunan awal demi kelestarian alam dan hasil jangka panjang."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Teks Stimulus: \"Penggunaan gawai (smartphone) pada anak usia dini ibarat pisau bermata dua. Di satu sisi, gawai menyediakan akses tak terbatas ke berbagai aplikasi edukasi interaktif. Namun, di sisi lain, paparan layar yang terlalu lama terbukti menurunkan rentang perhatian (attention span) anak dan memicu gangguan pola tidur.\"",
+            q: "18. Maksud dari ungkapan \"pisau bermata dua\" dalam teks tersebut adalah...",
+            opts: { A: "Gawai memiliki fungsi ganda sebagai senjata tajam", B: "Gawai memiliki dampak positif sekaligus dampak negatif yang sama besarnya", C: "Penggunaan gawai harus diawasi oleh orang dewasa", D: "Gawai hanya boleh digunakan untuk hal-hal yang berbahaya" },
+            key: "B",
+            exp: "Pembahasan Inferensial: Ungkapan 'pisau bermata dua' bermakna memiliki sisi manfaat sekaligus sisi risiko/dampak buruk."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Berdasarkan teks gawai di atas.",
+            q: "19. Kesimpulan yang paling tepat mengenai hubungan durasi penggunaan gawai dan kesehatan anak adalah...",
+            opts: { A: "Semakin lama anak menatap layar gawai, semakin baik kemampuan otaknya", B: "Durasi penggunaan gawai tidak memengaruhi tumbuh kembang anak", C: "Penggunaan gawai secara berlebihan berdampak buruk pada fokus dan tidur anak", D: "Gawai sama sekali tidak memiliki manfaat edukasi bagi anak" },
+            key: "C",
+            exp: "Pembahasan Inferensial: Paparan layar terlalu lama terbukti menurunkan perhatian dan mengganggu tidur."
+        },
+        {
+            tag: "II. Aspek Pemahaman Inferensial",
+            stimulus: "Berdasarkan teks gawai di atas.",
+            q: "20. Prediksi yang logis jika seorang anak dibiarkan bermain gawai sepanjang hari tanpa batas adalah...",
+            opts: { A: "Anak tersebut akan menjadi juara kelas", B: "Anak tersebut berisiko mengalami gangguan tidur dan sulit berkonsentrasi", C: "Penglihatan anak tersebut akan semakin tajam", D: "Anak tersebut menjadi lebih aktif bersosialisasi di dunia nyata" },
+            key: "B",
+            exp: "Pembahasan Inferensial: Konsekuensi logis dari penggunaan tanpa batas adalah gangguan atensi dan pola tidur."
+        },
+
+        // --- III. ASPEK EVALUASI DAN APRESIASI ---
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Teks Stimulus: \"Matahari perlahan tenggelam di ufuk barat, menyisakan warna jingga yang hangat di langit senja. Di teras rumah tua itu, kakek duduk tenang sambil menyeruput teh hangat, seolah menikmati kedamaian setelah bertahun-tahun badai kehidupan menerpanya.\"",
+            q: "21. Apa unsur estetika (gaya bahasa) yang paling menonjol pada kalimat pertama kutipan tersebut?",
+            opts: { A: "Personifikasi (memberikan sifat manusia pada benda mati)", B: "Metafora (perbandingan langsung)", C: "Hiperbola (melebih-lebihkan)", D: "Litotes (merendahkan diri)" },
+            key: "A",
+            exp: "Evaluasi Apresiasi: Penggambaran matahari tenggelam dan warna jingga hangat yang seolah hidup menggambarkan gaya deskriptif-estetis."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Berdasarkan kutipan cerpen di atas.",
+            q: "22. Bagaimana pengarang membangun suasana (atmosfer) dalam kutipan cerita di atas?",
+            opts: { A: "Melalui deskripsi visual senja dan ketenangan sang kakek", B: "Melalui dialog yang menegangkan antartokoh", C: "Melalui konflik batin yang rumit", D: "Melalui alur cerita yang bergerak sangat cepat" },
+            key: "A",
+            exp: "Evaluasi Apresiasi: Suasana tenang dibangun lewat penggambaran visual senja dan aktivitas kakek."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Berdasarkan kutipan cerpen di atas.",
+            q: "23. Apa kesan atau pesan moral yang dapat diapresiasi dari penggambaran sosok kakek di akhir teks?",
+            opts: { A: "Pentingnya menikmati masa tua dengan ketenangan batin dan rasa syukur", B: "Kakek adalah orang yang kesepian dan diabaikan keluarga", C: "Teh hangat dapat menyembuhkan segala penyakit", D: "Hidup di desa lebih baik daripada di kota besar" },
+            key: "A",
+            exp: "Evaluasi Apresiasi: Pesan damai setelah 'badai kehidupan' menyimbolkan penerimaan dan ketenangan masa tua."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Teks Stimulus: \"Novel Bumi karya Tere Liye berhasil memikat pembaca remaja melalui alur petualangan fiksi ilmiah yang imajinatif dan penuh teka-teki. Meskipun ada beberapa istilah sains fiksi yang terasa agak rumit bagi pembaca awam, penokohan yang kuat serta nilai-nilai persahabatan yang diselipkan membuat buku ini tetap sangat layak dibaca.\"",
+            q: "24. Bagian kalimat manakah dalam teks resensi tersebut yang menunjukkan bentuk kritik (kekurangan)?",
+            opts: { A: "\"Novel Bumi karya Tere Liye berhasil memikat pembaca remaja...\"", B: "\"...alur petualangan fiksi ilmiah yang imajinatif dan penuh teka-teki.\"", C: "\"Meskipun ada beberapa istilah sains fiksi yang terasa agak rumit bagi pembaca awam...\"", D: "\"...penokohan yang kuat serta nilai-nilai persahabatan yang diselipkan...\"" },
+            key: "C",
+            exp: "Evaluasi Apresiasi: Kata 'meskipun' menandai kelemahan/kritik bahwa istilah sainsnya agak rumit."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Berdasarkan teks resensi novel Bumi di atas.",
+            q: "25. Apa bentuk apresiasi atau pujian utama yang diberikan oleh penulis resensi terhadap novel tersebut?",
+            opts: { A: "Harganya sangat terjangkau bagi pelajar", B: "Alur petualangannya imajinatif, penokohannya kuat, dan sarat nilai persahabatan", C: "Novel tersebut ditulis oleh penulis terkenal", D: "Tidak memiliki satupun kekurangan dalam hal penulisan" },
+            key: "B",
+            exp: "Evaluasi Apresiasi: Pujian resensi terletak pada keunggulan alur, penokohan, dan nilai persahabatan."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Berdasarkan teks resensi novel Bumi di atas.",
+            q: "26. Berdasarkan isinya, kepada siapa rekomendasi utama buku tersebut ditujukan?",
+            opts: { A: "Peneliti sains profesional", B: "Pembaca remaja", C: "Anak-anak balita", D: "Pemerhati sejarah kuno" },
+            key: "B",
+            exp: "Evaluasi Apresiasi: Teks secara eksplisit menyebutkan berhasil memikat pembaca remaja."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Teks Stimulus: \"Pemerintah kota seharusnya segera memperbanyak ruang terbuka hijau (RTH) di pusat-pusat perkotaan. Saat ini, tingkat polusi udara akibat emisi kendaraan bermotor sudah berada di ambang batas yang membahayakan kesehatan paru-paru warga. Tanpa adanya penambahan pohon dan taman kota, kota ini akan segera berubah menjadi 'lautan beton' yang menyesakkan.\"",
+            q: "27. Kalimat manakah yang berfungsi sebagai klaim utama (pendapat/tesis) penulis dalam paragraf tersebut?",
+            opts: { A: "Tingkat polusi udara sudah berada di ambang batas membahayakan.", B: "Pemerintah kota seharusnya segera memperbanyak ruang terbuka hijau di pusat perkotaan.", C: "Emisi kendaraan bermotor menjadi penyebab utama polusi.", D: "Kota ini akan segera berubah menjadi lautan beton." },
+            key: "B",
+            exp: "Evaluasi Apresiasi: Klaim/tesis utama penulis adalah seruan agar pemerintah segera memperbanyak RTH."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Berdasarkan teks argumen RTH di atas.",
+            q: "28. Apa jenis bukti atau alasan pendukung yang digunakan penulis untuk memperkuat argumennya?",
+            opts: { A: "Data statistik jumlah kendaraan bermotor secara rinci", B: "Pendapat dari para ahli kesehatan dunia", C: "Kondisi tingkat polusi udara yang membahayakan kesehatan dan minimnya taman", D: "Hasil survei pendapat warga kota" },
+            key: "C",
+            exp: "Evaluasi Apresiasi: Penulis mendasarkan argumen pada fakta kondisi polusi udara yang mengancam kesehatan."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Berdasarkan teks argumen RTH di atas.",
+            q: "29. Bagaimana evaluasi terhadap efektivitas kalimat penutup (\"lautan beton yang menyesakkan\" dalam teks)?",
+            opts: { A: "Kalimat tersebut kurang efektif karena membingungkan pembaca", B: "Kalimat tersebut merupakan majas metafora yang efektif memperkuat kesan sesaknya polusi kota", C: "Kalimat tersebut adalah fakta ilmiah yang dapat dibuktikan di laboratorium", D: "Kalimat tersebut tidak berkaitan sama sekali dengan paragraf sebelumnya" },
+            key: "B",
+            exp: "Evaluasi Apresiasi: Frasa 'lautan beton' adalah metafora efektif untuk menggambarkan padatnya bangunan tanpa pohon."
+        },
+        {
+            tag: "III. Aspek Evaluasi dan Apresiasi",
+            stimulus: "Berdasarkan teks argumen RTH di atas.",
+            q: "30. Jika seorang pembaca ingin mengkritisi argumen penulis, kelemahan apa yang paling mungkin ditemukan?",
+            opts: { A: "Penulis tidak menyebutkan secara spesifik lokasi atau data kuantitatif tingkat polusi kota tersebut", B: "Penulis menggunakan bahasa yang terlalu santai", C: "Penulis tidak menyukai kendaraan bermotor", D: "Paragraf yang disajikan terlalu panjang dan membosankan" },
+            key: "A",
+            exp: "Evaluasi Apresiasi: Kritik konstruktif terhadap argumen dapat diarahkan pada absennya data kuantitatif spesifik (angka/lokasi)."
+        }
     ]
 };
 
 let activePaket = "1";
 
 function mulaiUjian() {
-    let nama = document.getElementById('namaSiswa').value.trim();
-    let kelas = document.getElementById('kelasSiswa').value.trim();
+    let namaInput = document.getElementById('namaSiswa');
+    let kelasInput = document.getElementById('kelasSiswa');
     let selectPaket = document.getElementById('pilihPaket');
+
+    if(!namaInput || !kelasInput || !selectPaket) {
+        alert("Terjadi kesalahan sistem elemen. Silakan muat ulang halaman.");
+        return;
+    }
+
+    let nama = namaInput.value.trim();
+    let kelas = kelasInput.value.trim();
     activePaket = selectPaket.value;
 
     if(nama === "" || kelas === "") {
@@ -150,7 +408,8 @@ function mulaiUjian() {
         return;
     }
 
-    document.getElementById('displayInfo').innerHTML = `Siswa: <b>${nama}</b> (Kelas: ${kelas}) | Paket Soal: <b>Paket ${activePaket}</b>`;
+    let namaPaketText = selectPaket.options[selectPaket.selectedIndex].text;
+    document.getElementById('displayInfo').innerHTML = `Siswa: <b>${nama}</b> (Kelas: ${kelas}) | <b>${namaPaketText}</b>`;
     document.getElementById('loginSection').classList.add('hidden');
     document.getElementById('quizSection').classList.remove('hidden');
 
@@ -170,7 +429,12 @@ function renderSoal(paketId) {
 
     soalList.forEach((item, index) => {
         let num = index + 1;
+        let badgeHtml = item.tag ? `<div class="badge-kognitif">${item.tag}</div><br>` : "";
+        let stimulusHtml = item.stimulus ? `<div class="text-stimulus">${item.stimulus}</div>` : "";
+        
         html += `<div class="question-box" id="box${num}">
+            ${badgeHtml}
+            ${stimulusHtml}
             <div class="question">${item.q}</div>
             <div class="options">`;
         
@@ -197,7 +461,7 @@ function checkAndSendWA() {
     for(let i=1; i<=globalTotal; i++) {
         let q = document.querySelector('input[name="q'+i+'"]:checked');
         if(!q) {
-            alert("Harap jawab semua 10 soal pada paket ini terlebih dahulu!");
+            alert(`Harap jawab semua ${globalTotal} soal pada paket ini terlebih dahulu! (Ada soal nomor ${i} yang belum dijawab)`);
             return;
         }
     }
@@ -227,22 +491,23 @@ function checkAndSendWA() {
     let percentage = (globalScore / globalTotal) * 100;
     if(percentage >= 80) {
         resultDiv.className = "correct-score";
-        resultDiv.innerHTML = `Hebat! Skor Anda: ${globalScore} dari ${globalTotal} (${percentage}%). Pesan WhatsApp akan otomatis terbuka!`;
+        resultDiv.innerHTML = `Hebat! Skor Anda: ${globalScore} dari ${globalTotal} (${percentage.toFixed(1)}%). Pesan WhatsApp akan otomatis terbuka!`;
     } else {
         resultDiv.className = "incorrect-score";
-        resultDiv.innerHTML = `Skor Anda: ${globalScore} dari ${globalTotal} (${percentage}%). Pesan WhatsApp akan otomatis terbuka!`;
+        resultDiv.innerHTML = `Skor Anda: ${globalScore} dari ${globalTotal} (${percentage.toFixed(1)}%). Pesan WhatsApp akan otomatis terbuka!`;
     }
 
     window.scrollTo(0, document.body.scrollHeight);
 
-    // Otomatis langsung membuka WhatsApp dalam 1 klik
     setTimeout(function() {
         let nomorWa = "6283822993789";
+        let selectPaket = document.getElementById('pilihPaket');
+        let paketNama = selectPaket.options[selectPaket.selectedIndex].text;
         let pesan = `Halo Pak Guru, saya sudah selesai mengerjakan latihan TKA.%0A%0A` +
                     `Nama: *${globalNama}*%0A` +
                     `Kelas: *${globalKelas}*%0A` +
-                    `Paket Soal: *Paket ${activePaket}*%0A` +
-                    `Skor Hasil: *${globalScore} dari ${globalTotal}*`;
+                    `Pilihan: *${paketNama}*%0A` +
+                    `Skor Hasil: *${globalScore} dari ${globalTotal} (${percentage.toFixed(1)}%)*`;
 
         let urlWA = `https://wa.me/${nomorWa}?text=${pesan}`;
         window.open(urlWA, '_blank');
